@@ -27,7 +27,7 @@ public class MainActivityFragment extends Fragment {
         collectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),Collections.class);
+                Intent intent=new Intent(getActivity(),CollectionsActivity.class);
                 startActivity(intent);
             }
         });
