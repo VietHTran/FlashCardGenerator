@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FlashCard</string>
     <string name="action_settings">Settings</string>
+    <string name="collections_main">Collections</string>
+    <string name="review_main">Review</string>
+    <string name="title_activity_collections">Collections</string>
 </resources>
