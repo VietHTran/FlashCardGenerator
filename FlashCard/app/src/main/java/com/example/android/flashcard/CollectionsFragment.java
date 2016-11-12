@@ -1,6 +1,9 @@
 package com.example.android.flashcard;
 
-import android.support.v4.app.Fragment;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +19,9 @@ import java.util.ArrayList;
  */
 public class CollectionsFragment extends Fragment {
 
+    private static final String COLLECTIONS_DIALOG = "collections_dialog";
+    private static final int REQUEST_COLLECTIONS = 0;
+
     public CollectionsFragment() {
     }
     //Setup the menu call by setHasOptionsMenu(true);
@@ -29,10 +35,34 @@ public class CollectionsFragment extends Fragment {
         int id=item.getItemId();
         //Add new collection
         if (id==R.id.action_add) {
-            //Create popup menu
+            FragmentManager manager = getActivity().getFragmentManager();
+            CollectionsDialog dialog = CollectionsDialog.newInstance("Create collection:", "Name");
+            dialog.setTargetFragment(CollectionsFragment.this, REQUEST_COLLECTIONS);
+            dialog.show(manager, COLLECTIONS_DIALOG);
             return true;
         }
         return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_COLLECTIONS) {
+            String title = data.getStringExtra(CollectionsDialog.EXTRA_TITLE);
+            if (DataManager.collections.containsKey(title)) {
+                FragmentManager manager = getActivity().getFragmentManager();
+                CollectionsDialog dialog = CollectionsDialog.newInstance("The collection you put in already exists:", "Name");
+                dialog.setTargetFragment(CollectionsFragment.this, REQUEST_COLLECTIONS);
+                dialog.show(manager, COLLECTIONS_DIALOG);
+            } else {
+                Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
+                intent.putExtra("title",title);
+                startActivity(intent);
+            }
+        }
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
