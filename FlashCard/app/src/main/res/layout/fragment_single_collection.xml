@@ -6,12 +6,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.android.flashcard.CollectionsFragment"
-    tools:showIn="@layout/activity_collections">
-    <android.support.v7.widget.RecyclerView
+    tools:context="com.example.android.flashcard.SingleCollectionFragment"
+    tools:showIn="@layout/activity_single_collection">
+    <LinearLayout
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:id="@+id/collection_list">
-    </android.support.v7.widget.RecyclerView>
+        android:orientation="vertical">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/flash_cards_listview">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 </RelativeLayout>

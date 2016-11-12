@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">FlashCard</string>
+    <string name="app_name">Flash Card</string>
     <string name="action_settings">Settings</string>
     <string name="collections_main">Collections</string>
     <string name="review_main">Review</string>
     <string name="title_activity_collections">Collections</string>
+    <string name="title_activity_single_collection">Collection</string>
+    <string name="delete_collection">Delete Collection</string>
+    <string name="add_collection">Add New Collection</string>
+    <string name="delete_flash_card">Delete Card</string>
+    <string name="add_flash_card">Add New Card</string>
+    <string name="edit_flash_card">Edit</string>
 </resources>
