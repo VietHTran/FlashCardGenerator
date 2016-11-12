@@ -21,6 +21,8 @@ import java.util.List;
  */
 public class SingleCollectionFragment extends Fragment {
     private FlashCardAdapter mFlashCardAdapter;
+    private ListView mListView;
+    private static int counter=0;
     public SingleCollectionFragment() {
     }
     //Setup the menu call by setHasOptionsMenu(true);
@@ -34,15 +36,26 @@ public class SingleCollectionFragment extends Fragment {
         int id=item.getItemId();
         if (id==R.id.action_add) {
             //Go to add CardActivity
+            counter=1;
             Intent intent= new Intent(getActivity(),CardActivity.class);
             startActivity(intent);
             return true;
         } else if (id==R.id.action_delete) {
             //Delete all cards
+
             //Go back to Collection
+
             return true;
         }
         return true;
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle) && mListView!=null) {
+            mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
+            mListView.setAdapter(mFlashCardAdapter);
+        }
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,9 +70,12 @@ public class SingleCollectionFragment extends Fragment {
             SingleCollectionActivity.mTitle=intent.getStringExtra("title");
         }
         View rootView=inflater.inflate(R.layout.fragment_single_collection, container, false);
-        mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
-        ListView listView=(ListView)rootView.findViewById(R.id.flash_cards_listview);
-        listView.setAdapter(mFlashCardAdapter);
+        mListView=(ListView)rootView.findViewById(R.id.flash_cards_listview);
+        Log.v("test","processerxxx");
+        if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle)) {
+            mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
+            mListView.setAdapter(mFlashCardAdapter);
+        }
         return rootView;
     }
 }
