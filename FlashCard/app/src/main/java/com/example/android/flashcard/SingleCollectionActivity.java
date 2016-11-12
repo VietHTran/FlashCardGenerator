@@ -10,6 +10,7 @@ import android.view.View;
 
 public class SingleCollectionActivity extends AppCompatActivity {
 
+    static String mTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +18,6 @@ public class SingleCollectionActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent intent = getIntent();
-        if (intent!=null) {
-            getActionBar().setTitle(intent.getStringExtra("title"));
-        }
     }
 
 }

@@ -4,7 +4,7 @@
     <string name="collections_main">Collections</string>
     <string name="review_main">Review</string>
     <string name="title_activity_collections">Collections</string>
-    <string name="title_activity_single_collection">Collection</string>
+    <string name="title_activity_single_collection">Single Collection</string>
     <string name="delete_collection">Delete Collection</string>
     <string name="add_collection">Add New Collection</string>
     <string name="delete_flash_card">Delete Card</string>

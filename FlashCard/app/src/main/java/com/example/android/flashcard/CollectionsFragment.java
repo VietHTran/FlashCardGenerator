@@ -29,6 +29,11 @@ public class CollectionsFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
         super.onCreateOptionsMenu(menu,menuInflater);
         menuInflater.inflate(R.menu.menu_collections_fragment,menu);
+//        FlashcardLab lab = FlashcardLab.get(getActivity());
+//        FlashcardHolder holder = new FlashcardHolder(question, answer, collection);
+//        lab.addFlashcard(holder);
+//        lab.deleteFlashcard(holder.uuid);
+//        lab.getFlashcards();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
