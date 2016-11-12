@@ -53,8 +53,7 @@ public class SingleCollectionFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle) && mListView!=null) {
-            mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
-            mListView.setAdapter(mFlashCardAdapter);
+            updateList();
         }
     }
     @Override
@@ -72,9 +71,22 @@ public class SingleCollectionFragment extends Fragment {
         View rootView=inflater.inflate(R.layout.fragment_single_collection, container, false);
         mListView=(ListView)rootView.findViewById(R.id.flash_cards_listview);
         if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle)) {
-            mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
-            mListView.setAdapter(mFlashCardAdapter);
+            updateList();
         }
         return rootView;
+    }
+    private void updateList() {
+        mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
+        mListView.setAdapter(mFlashCardAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<FlashCard> flashCards=DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards;
+                Intent intent= new Intent(getActivity(),CardCheckActivity.class);
+                intent.putExtra("question",flashCards.get(position).question);
+                intent.putExtra("answer",flashCards.get(position).answer);
+                startActivity(intent);
+            }
+        });
     }
 }
