@@ -53,6 +53,24 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.flashcard.SingleCollectionActivity" />
         </activity>
+        <activity
+            android:name=".ReviewCollectionActivity"
+            android:label="@string/title_activity_review_collection"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.flashcard.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ReviewActivity"
+            android:label="@string/title_activity_review"
+            android:parentActivityName=".ReviewCollectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.flashcard.ReviewCollectionActivity" />
+        </activity>
     </application>
 
 </manifest>

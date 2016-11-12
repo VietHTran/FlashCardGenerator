@@ -12,4 +12,6 @@
     <string name="edit_flash_card">Edit</string>
     <string name="title_activity_card">CardActivity</string>
     <string name="title_activity_card_check">CardCheckActivity</string>
+    <string name="title_activity_review_collection">ReviewCollectionActivity</string>
+    <string name="title_activity_review">ReviewActivity</string>
 </resources>

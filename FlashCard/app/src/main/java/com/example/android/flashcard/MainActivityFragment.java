@@ -36,7 +36,8 @@ public class MainActivityFragment extends Fragment {
         reviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(getActivity(),ReviewCollectionActivity.class);
+                startActivity(intent);
             }
         });
 
