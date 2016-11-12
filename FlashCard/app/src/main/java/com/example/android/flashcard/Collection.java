@@ -12,5 +12,6 @@ public class Collection {
     public ArrayList<FlashCard> flashCards;
     public Collection(String name) {
         this.name=name;
+        flashCards= new ArrayList<FlashCard>();
     }
 }

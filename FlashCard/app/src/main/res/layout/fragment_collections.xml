@@ -8,10 +8,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.flashcard.CollectionsFragment"
     tools:showIn="@layout/activity_collections">
-    <android.support.v7.widget.RecyclerView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:id="@+id/collection_list">
-    </android.support.v7.widget.RecyclerView>
+    </ListView>
 </RelativeLayout>

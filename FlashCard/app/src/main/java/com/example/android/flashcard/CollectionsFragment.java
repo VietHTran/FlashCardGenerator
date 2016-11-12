@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -64,6 +65,7 @@ public class CollectionsFragment extends Fragment {
                 dialog.show(manager, COLLECTIONS_DIALOG);
             } else {
                 Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
+                Log.v("test","isthistitle "+title);
                 intent.putExtra("title",title);
                 startActivity(intent);
             }

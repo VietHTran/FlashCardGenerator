@@ -31,7 +31,8 @@ public class SingleCollectionFragment extends Fragment {
         int id=item.getItemId();
         if (id==R.id.action_add) {
             //Go to add CardActivity
-            
+            Intent intent= new Intent(getActivity(),CardActivity.class);
+            startActivity(intent);
             return true;
         } else if (id==R.id.action_delete) {
             //Delete all cards
@@ -48,7 +49,10 @@ public class SingleCollectionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        Intent intent=getActivity().getIntent();
+        if (intent!=null) {
+            SingleCollectionActivity.mTitle=intent.getStringExtra("title");
+        }
         return inflater.inflate(R.layout.fragment_single_collection, container, false);
     }
 }

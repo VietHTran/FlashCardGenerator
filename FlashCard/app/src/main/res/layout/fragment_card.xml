@@ -41,5 +41,12 @@
             android:gravity="start"
             android:singleLine="false"
             android:textSize="24dp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:id="@+id/card_save"
+            android:text="Save">
+        </Button>
     </LinearLayout>
 </RelativeLayout>
