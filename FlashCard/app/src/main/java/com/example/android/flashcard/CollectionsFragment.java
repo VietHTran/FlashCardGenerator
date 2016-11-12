@@ -24,6 +24,7 @@ public class CollectionsFragment extends Fragment {
 
     private static final String COLLECTIONS_DIALOG = "collections_dialog";
     private static final int REQUEST_COLLECTIONS = 0;
+    private ListView mListView;
     CollectionAdapter mCollectionAdapter;
     public CollectionsFragment() {
     }
@@ -51,7 +52,15 @@ public class CollectionsFragment extends Fragment {
         }
         return true;
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.v("test","upupup");
+        if (mListView!=null) {
+            mCollectionAdapter=new CollectionAdapter(getActivity(),DataManager.names);
+            mListView.setAdapter(mCollectionAdapter);
+        }
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) {
@@ -82,9 +91,9 @@ public class CollectionsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_collections, container, false);
         mCollectionAdapter=new CollectionAdapter(getActivity(),DataManager.names);
-        ListView listView=(ListView)rootView.findViewById(R.id.collection_list);
-        listView.setAdapter(mCollectionAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        mListView=(ListView)rootView.findViewById(R.id.collection_list);
+        mListView.setAdapter(mCollectionAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);

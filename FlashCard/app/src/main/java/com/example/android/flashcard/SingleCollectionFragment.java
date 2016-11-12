@@ -71,7 +71,6 @@ public class SingleCollectionFragment extends Fragment {
         }
         View rootView=inflater.inflate(R.layout.fragment_single_collection, container, false);
         mListView=(ListView)rootView.findViewById(R.id.flash_cards_listview);
-        Log.v("test","processerxxx");
         if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle)) {
             mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
             mListView.setAdapter(mFlashCardAdapter);

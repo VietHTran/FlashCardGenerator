@@ -51,6 +51,7 @@ public class CardActivityFragment extends Fragment {
                     Collection collection= new Collection(SingleCollectionActivity.mTitle);
                     collection.flashCards.add(flashCard);
                     DataManager.collections.put(SingleCollectionActivity.mTitle,collection);
+                    DataManager.names.add(collection);
                 }
                 Toast.makeText(getActivity(),"Card saved successfully", Toast.LENGTH_SHORT).show();
                 lab.addFlashcard(holder);
