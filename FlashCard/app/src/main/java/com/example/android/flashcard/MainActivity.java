@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 Collection collection= new Collection(holder.collection);
                 collection.flashCards.add(flashCard);
                 DataManager.collections.put(holder.collection,collection);
+                DataManager.names.add(collection);
             } else {
                 DataManager.collections.get(holder.collection).flashCards.add(flashCard);
             }

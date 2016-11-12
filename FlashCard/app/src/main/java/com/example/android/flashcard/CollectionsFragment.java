@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class CollectionsFragment extends Fragment {
 
     private static final String COLLECTIONS_DIALOG = "collections_dialog";
     private static final int REQUEST_COLLECTIONS = 0;
-
+    CollectionAdapter mCollectionAdapter;
     public CollectionsFragment() {
     }
     //Setup the menu call by setHasOptionsMenu(true);
@@ -65,7 +66,6 @@ public class CollectionsFragment extends Fragment {
                 dialog.show(manager, COLLECTIONS_DIALOG);
             } else {
                 Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
-                Log.v("test","isthistitle "+title);
                 intent.putExtra("title",title);
                 startActivity(intent);
             }
@@ -79,6 +79,10 @@ public class CollectionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_collections, container, false);
+        View rootView=inflater.inflate(R.layout.fragment_collections, container, false);
+        mCollectionAdapter=new CollectionAdapter(getActivity(),DataManager.names);
+        ListView listView=(ListView)rootView.findViewById(R.id.collection_list);
+        listView.setAdapter(mCollectionAdapter);
+        return rootView;
     }
 }
