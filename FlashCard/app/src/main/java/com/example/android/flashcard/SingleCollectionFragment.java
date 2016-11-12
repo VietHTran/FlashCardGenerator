@@ -10,14 +10,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class SingleCollectionFragment extends Fragment {
-
+    private FlashCardAdapter mFlashCardAdapter;
     public SingleCollectionFragment() {
     }
     //Setup the menu call by setHasOptionsMenu(true);
@@ -53,6 +56,10 @@ public class SingleCollectionFragment extends Fragment {
         if (intent!=null) {
             SingleCollectionActivity.mTitle=intent.getStringExtra("title");
         }
-        return inflater.inflate(R.layout.fragment_single_collection, container, false);
+        View rootView=inflater.inflate(R.layout.fragment_single_collection, container, false);
+        mFlashCardAdapter=new FlashCardAdapter(getActivity(),DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards);
+        ListView listView=(ListView)rootView.findViewById(R.id.flash_cards_listview);
+        listView.setAdapter(mFlashCardAdapter);
+        return rootView;
     }
 }

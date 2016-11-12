@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -83,6 +84,14 @@ public class CollectionsFragment extends Fragment {
         mCollectionAdapter=new CollectionAdapter(getActivity(),DataManager.names);
         ListView listView=(ListView)rootView.findViewById(R.id.collection_list);
         listView.setAdapter(mCollectionAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
+                intent.putExtra("title",DataManager.names.get(position).name);
+                startActivity(intent);
+            }
+        });
         return rootView;
     }
 }
