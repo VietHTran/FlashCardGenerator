@@ -35,6 +35,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CollectionsActivity" />
         </activity>
+        <activity
+            android:name=".CardActivity"
+            android:label="@string/title_activity_card"
+            android:parentActivityName=".SingleCollectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.android.flashcard.SingleCollectionActivity" />
+        </activity>
     </application>
 
 </manifest>

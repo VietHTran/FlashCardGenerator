@@ -1,5 +1,7 @@
 package com.example.android.flashcard;
 
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**

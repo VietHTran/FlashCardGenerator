@@ -10,4 +10,5 @@
     <string name="delete_flash_card">Delete Card</string>
     <string name="add_flash_card">Add New Card</string>
     <string name="edit_flash_card">Edit</string>
+    <string name="title_activity_card">CardActivity</string>
 </resources>
