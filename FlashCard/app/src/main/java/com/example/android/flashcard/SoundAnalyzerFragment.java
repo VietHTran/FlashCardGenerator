@@ -241,12 +241,14 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
 
         Spinner spinner = (Spinner)mView.findViewById(R.id.spinnerModels);
         int iIndexDefault = 0;
-
+        Log.v("test","farah1");
         JSONObject obj = jsonModels;
+        Log.v("test","farah2");
         ItemModel [] items = null;
         try {
+            Log.v("test","farah3");
             JSONArray models = obj.getJSONArray("models");
-
+            Log.v("test","farah4");
             // count the number of Broadband models (narrowband models will be ignored since they are for telephony data)
             Vector<Integer> v = new Vector<>();
             for (int i = 0; i < models.length(); ++i) {
