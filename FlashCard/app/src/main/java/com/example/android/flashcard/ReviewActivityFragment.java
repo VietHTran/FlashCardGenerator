@@ -43,7 +43,12 @@ public class ReviewActivityFragment extends Fragment {
         flip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTextView.setText(flashCards.get(position).answer);
+                String text=flashCards.get(position).answer;
+                if (mTextView.getText().equals(text)) {
+                    mTextView.setText(flashCards.get(position).question);
+                } else {
+                    mTextView.setText(flashCards.get(position).answer);
+                }
             }
         });
         next.setOnClickListener(new View.OnClickListener() {

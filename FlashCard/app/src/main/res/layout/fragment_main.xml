@@ -30,6 +30,14 @@
             android:padding="30dp"
             android:id="@+id/review_main">
         </Button>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Voice Command"
+            android:textSize="15dp"
+            android:padding="30dp"
+            android:id="@+id/voice_command_main">
+        </Button>
     </LinearLayout>
 
 </RelativeLayout>

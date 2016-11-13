@@ -14,4 +14,6 @@
     <string name="title_activity_card_check">CardCheckActivity</string>
     <string name="title_activity_review_collection">ReviewCollectionActivity</string>
     <string name="title_activity_review">ReviewActivity</string>
+    <string name="title_activity_sound_analyzer">SoundAnalyzer</string>
+    <string name="defaultTokenFactory">&lt;token-factory-url&gt;</string>
 </resources>
