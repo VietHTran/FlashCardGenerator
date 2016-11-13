@@ -26,7 +26,6 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
 import com.ibm.watson.developer_cloud.android.speech_common.v1.TokenProvider;
 import com.ibm.watson.developer_cloud.android.speech_to_text.v1.ISpeechDelegate;
 import com.ibm.watson.developer_cloud.android.speech_to_text.v1.ISpeechDelegate;
-import com.ibm.watson.developer_cloud.android.speech_to_text.v1.SpeechToText;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
