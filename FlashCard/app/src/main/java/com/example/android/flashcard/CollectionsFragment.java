@@ -55,7 +55,6 @@ public class CollectionsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.v("test","upupup");
         if (mListView!=null) {
             mCollectionAdapter=new CollectionAdapter(getActivity(),DataManager.names);
             mListView.setAdapter(mCollectionAdapter);

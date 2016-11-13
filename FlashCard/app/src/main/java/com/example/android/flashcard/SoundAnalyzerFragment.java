@@ -1,7 +1,9 @@
 package com.example.android.flashcard;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -143,6 +145,9 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
                     spinner.setEnabled(true);
                     SpeechToText.sharedInstance().stopRecognition();
                     setButtonState(false);
+                    DataManager.message=mRecognitionResults;
+                    DataManager.isChange=true;
+                    getActivity().finish();
                 }
             }
         });
@@ -279,6 +284,7 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
         final Runnable runnableUi = new Runnable(){
             @Override
             public void run() {
+                Log.v("test","thisistheres "+result);
                 TextView textResult = (TextView)mView.findViewById(R.id.textResult);
                 textResult.setText(result);
             }
@@ -292,7 +298,7 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
     }
 
     public void displayStatus(final String status) {
-            /*final Runnable runnableUi = new Runnable(){
+            final Runnable runnableUi = new Runnable(){
                 @Override
                 public void run() {
                     TextView textResult = (TextView)mView.findViewById(R.id.sttStatus);
@@ -303,7 +309,7 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
                 public void run(){
                     mHandler.post(runnableUi);
                 }
-            }.start();*/
+            }.start();
     }
 
     /**
@@ -368,7 +374,6 @@ public class SoundAnalyzerFragment extends Fragment implements ISpeechDelegate {
     }
 
     public void onMessage(String message) {
-
         Log.d(TAG, "onMessage, message: " + message);
         try {
             JSONObject jObj = new JSONObject(message);

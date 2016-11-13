@@ -9,8 +9,12 @@ import java.util.HashMap;
 public class DataManager {
     public static HashMap<String,Collection> collections;
     public static ArrayList<Collection> names;
+    public static String message;
+    public static boolean isChange;
     public DataManager() {
         collections=new HashMap<String, Collection>();
         names= new ArrayList<Collection>();
+        message="";
+        isChange=false;
     }
 }

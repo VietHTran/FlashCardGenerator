@@ -53,7 +53,6 @@ public class SpeechToText {
                 _instance = new SpeechToText();
             }
         }
-        Log.v("test","speechToTextHacked");
         return _instance;
     }
 

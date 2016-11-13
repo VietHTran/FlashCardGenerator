@@ -1,13 +1,16 @@
 package com.example.android.flashcard;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
@@ -35,7 +38,19 @@ public class MainActivityFragment extends Fragment{
 
     public MainActivityFragment() {
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (DataManager.isChange) {
+            DataManager.isChange=false;
+            if (DataManager.message.equals("")) {
+                Toast.makeText(getActivity(),"Error: Unable to recognize voice", Toast.LENGTH_SHORT).show();
+            } else {
+                Utility.handlingMessage(getActivity(),DataManager.message);
+            }
+            DataManager.message="";
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +61,7 @@ public class MainActivityFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getActivity(),CollectionsActivity.class);
-                startActivity(intent);
+                startActivityForResult((intent),69);
             }
         });
 
