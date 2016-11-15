@@ -1,5 +1,5 @@
 # FlashCardGenerator
-Android app that generates flashcards manually or through voice recognition API. This is the project developed for HackPSU hackathon
+Android app that generates flashcards manually or through voice recognition API. This is the project developed for HackPSU hackathon by Sreekuttan, Dhruvil, Viet, and Rohan.
 
 ## Inspiration
 
