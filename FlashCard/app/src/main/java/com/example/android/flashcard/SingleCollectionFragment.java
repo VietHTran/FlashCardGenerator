@@ -94,6 +94,7 @@ public class SingleCollectionFragment extends Fragment {
                 Intent intent= new Intent(getActivity(),CardCheckActivity.class);
                 intent.putExtra("question",flashCards.get(position).question);
                 intent.putExtra("answer",flashCards.get(position).answer);
+                intent.putExtra("position",position);
                 startActivity(intent);
             }
         });

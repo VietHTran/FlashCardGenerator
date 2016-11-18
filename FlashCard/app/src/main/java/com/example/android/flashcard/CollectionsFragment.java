@@ -76,6 +76,9 @@ public class CollectionsFragment extends Fragment {
             } else {
                 Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
                 intent.putExtra("title",title);
+                Collection collection=new Collection(title);
+                DataManager.collections.put(title,collection);
+                DataManager.names.add(collection);
                 startActivity(intent);
             }
         }
