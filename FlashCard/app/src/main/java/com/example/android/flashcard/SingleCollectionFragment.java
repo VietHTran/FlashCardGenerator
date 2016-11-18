@@ -42,9 +42,17 @@ public class SingleCollectionFragment extends Fragment {
             return true;
         } else if (id==R.id.action_delete) {
             //Delete all cards
-
-            //Go back to Collection
-
+            if (DataManager.collections.containsKey(SingleCollectionActivity.mTitle)) {
+                ArrayList<FlashCard> cards=DataManager.collections.get(SingleCollectionActivity.mTitle).flashCards;
+                //Go back to Collection
+                for (int i=0;i<cards.size();i++) {
+                    FlashcardLab lab = FlashcardLab.get(getActivity());
+                    lab.deleteFlashcard(cards.get(i).id);
+                }
+            }
+            DataManager.names.remove(DataManager.collections.get(SingleCollectionActivity.mTitle));
+            DataManager.collections.remove(SingleCollectionActivity.mTitle);
+            getActivity().finish();
             return true;
         }
         return true;
@@ -67,6 +75,7 @@ public class SingleCollectionFragment extends Fragment {
         Intent intent=getActivity().getIntent();
         if (intent!=null) {
             SingleCollectionActivity.mTitle=intent.getStringExtra("title");
+            getActivity().setTitle(SingleCollectionActivity.mTitle);
         }
         View rootView=inflater.inflate(R.layout.fragment_single_collection, container, false);
         mListView=(ListView)rootView.findViewById(R.id.flash_cards_listview);

@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.android.flashcard.database.AppCursorWrapper;
+import com.example.android.flashcard.database.DbSchema;
 import com.example.android.flashcard.database.DbSchema.FlashcardTable;
 import com.example.android.flashcard.database.FlashcardsBaseHelper;
 
@@ -40,7 +41,7 @@ public class FlashcardLab {
     }
 
     public void deleteFlashcard(UUID uuid) {
-        mDatabase.delete(FlashcardTable.NAME, "UUID = ?", new String[]{uuid.toString()});
+        mDatabase.delete(FlashcardTable.NAME, FlashcardTable.Cols.UUID+" = ?", new String[]{uuid.toString()});
     }
 
     public List<FlashcardHolder> getFlashcards() {
