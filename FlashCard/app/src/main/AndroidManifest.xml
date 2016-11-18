@@ -71,10 +71,6 @@
                 <!--android:name="android.support.PARENT_ACTIVITY"-->
                 <!--android:value="com.example.android.flashcard.ReviewCollectionActivity" />-->
         </activity>
-        <activity
-            android:name=".SoundAnalyzer"
-            android:label="@string/title_activity_sound_analyzer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

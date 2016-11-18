@@ -12,14 +12,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
-import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
-import com.ibm.watson.developer_cloud.android.speech_to_text.v1.ISpeechDelegate;
-import com.ibm.watson.developer_cloud.android.speech_to_text.v1.dto.SpeechConfiguration;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechModel;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -77,8 +69,9 @@ public class MainActivityFragment extends Fragment{
         voiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),SoundAnalyzer.class);
-                startActivity(intent);
+//                Intent intent=new Intent(getActivity(),SoundAnalyzer.class);
+//                startActivity(intent);
+                Toast.makeText(getActivity(),"The option is under maintenance", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
