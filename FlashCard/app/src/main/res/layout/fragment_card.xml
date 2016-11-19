@@ -44,9 +44,16 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="0.25"
             android:id="@+id/card_save"
             android:text="Save">
+        </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:id="@+id/card_voice"
+            android:text="Voice Input">
         </Button>
     </LinearLayout>
 </RelativeLayout>
