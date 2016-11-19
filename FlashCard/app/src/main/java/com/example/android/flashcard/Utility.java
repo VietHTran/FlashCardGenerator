@@ -1,7 +1,11 @@
 package com.example.android.flashcard;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.speech.RecognizerIntent;
+import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.Toast;
 
 /**
@@ -30,4 +34,8 @@ public class Utility {
             Toast.makeText(context,"Error: Unable to understand command", Toast.LENGTH_SHORT).show();
         }
     }
+    public static void showToastMessage(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
 }

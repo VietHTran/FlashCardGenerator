@@ -56,7 +56,7 @@ public class ReviewActivityFragment extends Fragment {
             public void onClick(View v) {
                 flashCards.remove(position);
                 if (flashCards.size()==0) {
-                    Toast.makeText(getActivity(),"Review finished", Toast.LENGTH_SHORT).show();
+                    Utility.showToastMessage(getActivity(),"Review finished");
                     getActivity().finish();
                 } else {
                     position=new Random().nextInt(flashCards.size());

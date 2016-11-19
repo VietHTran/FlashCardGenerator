@@ -35,7 +35,7 @@ public class MainActivityFragment extends Fragment{
     Button collectionButton;
     Button reviewButton;
     Button voiceButton;
-    private static final int VOICE_RECOGNITION_REQUEST_CODE = 1001;
+    static final int VOICE_RECOGNITION_REQUEST_CODE = 1001;
     public MainActivityFragment() {
     }
     @Override
@@ -44,7 +44,7 @@ public class MainActivityFragment extends Fragment{
         if (DataManager.isChange) {
             DataManager.isChange=false;
             if (DataManager.message.equals("")) {
-                Toast.makeText(getActivity(),"Error: Unable to recognize voice", Toast.LENGTH_SHORT).show();
+                Utility.showToastMessage(getActivity(),"Error: Unable to recognize voice");
             } else {
                 Utility.handlingMessage(getActivity(),DataManager.message);
             }
@@ -90,43 +90,10 @@ public class MainActivityFragment extends Fragment{
                 RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
         if (activities.size() == 0) {
             voiceButton.setEnabled(false);
-            Toast.makeText(getActivity(), "Voice recognizer not present",
-                    Toast.LENGTH_SHORT).show();
+            Utility.showToastMessage(getActivity(),"Voice recognition feature not present");
         }
     }
-    public void speak(View view) {
-        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
-        // Specify the calling package to identify your application
-        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getClass()
-                .getPackage().getName());
-
-        // Display an hint to the user about what he should say.
-//        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, metTextHint.getText()
-//                .toString());
-
-        // Given an hint to the recognizer about what the user is going to say
-        //There are two form of language model available
-        //1.LANGUAGE_MODEL_WEB_SEARCH : For short phrases
-        //2.LANGUAGE_MODEL_FREE_FORM  : If not sure about the words or phrases and its domain.
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
-
-        // If number of Matches is not selected then return show toast message
-//        if (msTextMatches.getSelectedItemPosition() == AdapterView.INVALID_POSITION) {
-//            Toast.makeText(this, "Please select No. of Matches from spinner",
-//                    Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//
-//        int noOfMatches = Integer.parseInt(msTextMatches.getSelectedItem()
-//                .toString());
-        // Specify how many results you want to receive. The results will be
-        // sorted where the first result is the one with higher confidence.
-        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
-        //Start the Voice recognizer activity for the result.
-        startActivityForResult(intent,VOICE_RECOGNITION_REQUEST_CODE);
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -149,28 +116,41 @@ public class MainActivityFragment extends Fragment{
                         search.putExtra(SearchManager.QUERY, searchQuery);
                         startActivity(search);
                     } else {
-                        showToastMessage(textMatchList.get(0));
+                        Utility.showToastMessage(getActivity(),textMatchList.get(0));
                     }
 
                 }
                 //Result code for various error.
             }else if(resultCode == RecognizerIntent.RESULT_AUDIO_ERROR){
-                showToastMessage("Audio Error");
+                Utility.showToastMessage(getActivity(),"Audio Error");
             }else if(resultCode == RecognizerIntent.RESULT_CLIENT_ERROR){
-                showToastMessage("Client Error");
+                Utility.showToastMessage(getActivity(),"Client Error");
             }else if(resultCode == RecognizerIntent.RESULT_NETWORK_ERROR){
-                showToastMessage("Network Error");
+                Utility.showToastMessage(getActivity(),"Network Error");
             }else if(resultCode == RecognizerIntent.RESULT_NO_MATCH){
-                showToastMessage("No Match");
+                Utility.showToastMessage(getActivity(),"No Match");
             }else if(resultCode == RecognizerIntent.RESULT_SERVER_ERROR){
-                showToastMessage("Server Error");
+                Utility.showToastMessage(getActivity(),"Server Error");
             }
         super.onActivityResult(requestCode, resultCode, data);
     }
-    /**
-     * Helper method to show the toast message
-     **/
-    void showToastMessage(String message){
-        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+    public void speak(View view) {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+
+        // Specify the calling package to identify your application
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getClass()
+                .getPackage().getName());
+
+        // Given an hint to the recognizer about what the user is going to say
+        //There are two form of language model available
+        //1.LANGUAGE_MODEL_WEB_SEARCH : For short phrases
+        //2.LANGUAGE_MODEL_FREE_FORM  : If not sure about the words or phrases and its domain.
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
+        // Specify how many results you want to receive. The results will be
+        // sorted where the first result is the one with higher confidence.
+        intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
+        //Start the Voice recognizer activity for the result.
+        startActivityForResult(intent,VOICE_RECOGNITION_REQUEST_CODE);
     }
 }

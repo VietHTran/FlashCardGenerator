@@ -34,7 +34,7 @@ public class CardActivityFragment extends Fragment {
             public void onClick(View v) {
                 String q=question.getText().toString(),ans=answer.getText().toString();
                 if (q.equals("") || ans.equals("")) {
-                    Toast.makeText(getActivity(),"Please fill in both question and answer input", Toast.LENGTH_SHORT).show();
+                    Utility.showToastMessage(getActivity(),"Please fill in both question and answer input");
                     return;
                 }
                 //Add to database
@@ -53,7 +53,7 @@ public class CardActivityFragment extends Fragment {
                     DataManager.collections.put(SingleCollectionActivity.mTitle,collection);
                     DataManager.names.add(collection);
                 }
-                Toast.makeText(getActivity(),"Card saved successfully", Toast.LENGTH_SHORT).show();
+                Utility.showToastMessage(getActivity(),"Card saved successfully");
                 lab.addFlashcard(holder);
                 getActivity().finish();
             }
