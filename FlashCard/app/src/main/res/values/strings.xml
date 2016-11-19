@@ -10,10 +10,9 @@
     <string name="delete_flash_card">Delete Card</string>
     <string name="add_flash_card">Add New Card</string>
     <string name="edit_flash_card">Edit</string>
-    <string name="title_activity_card">CardActivity</string>
-    <string name="title_activity_card_check">CardCheckActivity</string>
-    <string name="title_activity_review_collection">ReviewCollectionActivity</string>
-    <string name="title_activity_review">ReviewActivity</string>
-    <string name="title_activity_sound_analyzer">SoundAnalyzer</string>
+    <string name="title_activity_card">Card</string>
+    <string name="title_activity_card_check">Card Check</string>
+    <string name="title_activity_review_collection">Review Collections</string>
+    <string name="title_activity_review">Review</string>
     <string name="defaultTokenFactory">&lt;token-factory-url&gt;</string>
 </resources>

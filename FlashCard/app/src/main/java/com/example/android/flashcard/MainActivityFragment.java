@@ -116,7 +116,7 @@ public class MainActivityFragment extends Fragment{
                         search.putExtra(SearchManager.QUERY, searchQuery);
                         startActivity(search);
                     } else {
-                        Utility.showToastMessage(getActivity(),textMatchList.get(0));
+                        Utility.handlingMessage(getActivity(),textMatchList.get(0));
                     }
 
                 }

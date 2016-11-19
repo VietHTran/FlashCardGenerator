@@ -11,6 +11,13 @@ Generates flash cards for students manually or through speech to text process.
 Neatly stores and manages flashcards or revision.
 Help students review lessons through generating random flash cards.
 
+## Available Voice Commands
+This is not the completed list as we still plan on adding more commands in order to make the app more convenient.
+- collections: jump to collections options.
+- <collection name>: jump to specified collection.
+- review: jump to review options.
+- review <collection name>: jump directly review screen of a specified collection.
+
 ## How we built it
 
 We used Android Studio to design and code the app in Java and XML and speech-to-text API from IBM Watson to create command which the app follows to make flash cards.
