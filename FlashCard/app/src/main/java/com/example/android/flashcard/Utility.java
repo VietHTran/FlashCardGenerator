@@ -36,7 +36,17 @@ public class Utility {
             context.startActivity(intent);
         } else if (words[0].equals("collections") || words[0].equals("collection")
                 || words[0].equals("connection") || words[0].equals("connections")) {
-            Intent intent= new Intent(context,CollectionsActivity.class);
+            String sub="";
+            if (message.length()>words[0].length()+1) {
+                sub=message.substring(words[0].length()+1);
+            }
+            Intent intent;
+            if (!sub.equals("")&&checkCollectionName(sub,context)) {
+                intent= new Intent(context,SingleCollectionActivity.class);
+                intent.putExtra("title",original);
+            } else {
+                intent= new Intent(context,CollectionsActivity.class);
+            }
             context.startActivity(intent);
         } else if (checkCollectionName(message,context)){
             Intent intent= new Intent(context,SingleCollectionActivity.class);
