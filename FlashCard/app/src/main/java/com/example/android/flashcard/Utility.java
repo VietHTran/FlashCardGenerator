@@ -34,6 +34,10 @@ public class Utility {
                 intent= new Intent(context,ReviewCollectionActivity.class);
             }
             context.startActivity(intent);
+        }  else if (checkCollectionName(message,context)){
+            Intent intent= new Intent(context,SingleCollectionActivity.class);
+            intent.putExtra("title",original);
+            context.startActivity(intent);
         } else if (words[0].equals("collections") || words[0].equals("collection")
                 || words[0].equals("connection") || words[0].equals("connections")) {
             String sub="";
@@ -48,11 +52,21 @@ public class Utility {
                 intent= new Intent(context,CollectionsActivity.class);
             }
             context.startActivity(intent);
-        } else if (checkCollectionName(message,context)){
-            Intent intent= new Intent(context,SingleCollectionActivity.class);
-            intent.putExtra("title",original);
+        } else if (words[0].equals("new") || words[0].equals("add")) {
+            String sub="";
+            if (message.length()>4) {
+                sub=message.substring(4);
+            }
+            Intent intent;
+            if (!sub.equals("")&&checkCollectionName(sub,context)) {
+                intent= new Intent(context,CardActivity.class);
+                SingleCollectionActivity.mTitle=original;
+            } else {
+                intent= new Intent(context,CollectionsActivity.class);
+                intent.putExtra("katana",true);
+            }
             context.startActivity(intent);
-        } else {
+        }else {
             showToastMessage(context,"Error: Unable to understand command \""+message+"\"");
         }
     }

@@ -12,12 +12,15 @@ Neatly stores and manages flashcards or revision.
 Help students review lessons through generating random flash cards.
 
 ## Available Voice Commands
-This is not the completed list as we still plan on adding more commands in order to make the app more convenient.
 - collections: jump to collections options.
-- collections (collection name): jump to specified collection
+- collections (collection name): jump to specified collection.
 - (collection name): jump to specified collection.
 - review: jump to review options.
 - review (collection name): jump to the review screen of a specified collection.
+- add: create new collection.
+- new: create new collection.
+- add (collection name): create new flashcard in specified collection.
+- new (collection name): create new flashcard in specified collection.
 
 ## How we built it
 

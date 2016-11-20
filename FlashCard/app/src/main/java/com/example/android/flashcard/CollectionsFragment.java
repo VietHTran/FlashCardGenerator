@@ -38,16 +38,17 @@ public class CollectionsFragment extends Fragment {
 //        lab.addFlashcard(holder);
 //        lab.deleteFlashcard(holder.uuid);
 //        lab.getFlashcards();
+        Intent intent= getActivity().getIntent();
+        if (intent.hasExtra("katana")) {
+            openInputBox("Create collection:");
+        }
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         //Add new collection
         if (id==R.id.action_add) {
-            FragmentManager manager = getActivity().getFragmentManager();
-            CollectionsDialog dialog = CollectionsDialog.newInstance("Create collection:", "Name");
-            dialog.setTargetFragment(CollectionsFragment.this, REQUEST_COLLECTIONS);
-            dialog.show(manager, COLLECTIONS_DIALOG);
+            openInputBox("Create collection:");
             return true;
         }
         return true;
@@ -69,10 +70,7 @@ public class CollectionsFragment extends Fragment {
         if (requestCode == REQUEST_COLLECTIONS) {
             String title = data.getStringExtra(CollectionsDialog.EXTRA_TITLE);
             if (DataManager.collections.containsKey(title)) {
-                FragmentManager manager = getActivity().getFragmentManager();
-                CollectionsDialog dialog = CollectionsDialog.newInstance("The collection you put in already exists:", "Name");
-                dialog.setTargetFragment(CollectionsFragment.this, REQUEST_COLLECTIONS);
-                dialog.show(manager, COLLECTIONS_DIALOG);
+                openInputBox("The collection you put in already exists:");
             } else {
                 Intent intent= new Intent(getActivity(),SingleCollectionActivity.class);
                 intent.putExtra("title",title);
@@ -104,5 +102,11 @@ public class CollectionsFragment extends Fragment {
             }
         });
         return rootView;
+    }
+    private void openInputBox(String message) {
+        FragmentManager manager = getActivity().getFragmentManager();
+        CollectionsDialog dialog = CollectionsDialog.newInstance(message, "Name");
+        dialog.setTargetFragment(CollectionsFragment.this, REQUEST_COLLECTIONS);
+        dialog.show(manager, COLLECTIONS_DIALOG);
     }
 }

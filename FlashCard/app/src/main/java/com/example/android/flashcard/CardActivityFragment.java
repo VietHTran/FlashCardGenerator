@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,8 @@ public class CardActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_card, container, false);
-        question=(TextView) rootView.findViewById(R.id.input_question);
-        answer=(TextView) rootView.findViewById(R.id.input_answer);
+        question=(EditText) rootView.findViewById(R.id.input_question);
+        answer=(EditText) rootView.findViewById(R.id.input_answer);
         Button save =(Button) rootView.findViewById(R.id.card_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
