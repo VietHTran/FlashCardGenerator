@@ -3,6 +3,7 @@ package com.example.android.flashcard;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,11 +31,13 @@ public class ReviewActivityFragment extends Fragment {
         position=-1;
         if (intent!=null) {
             String name=intent.getStringExtra("title");
-            flashCards=DataManager.collections.get(name).flashCards;
+            flashCards=new ArrayList<FlashCard>(DataManager.collections.get(name).flashCards);
             position=0;
         }
-        if (position==-1) {
+        if (position==-1 || flashCards.size()==0) {
             getActivity().finish();
+            Utility.showToastMessage(getActivity(),"empty collection");
+            return root;
         }
         Button flip= (Button) root.findViewById(R.id.button_flip);
         Button next= (Button) root.findViewById(R.id.button_next);
