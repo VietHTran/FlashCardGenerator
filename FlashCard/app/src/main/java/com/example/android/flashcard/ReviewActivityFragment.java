@@ -42,6 +42,7 @@ public class ReviewActivityFragment extends Fragment {
         Button flip= (Button) root.findViewById(R.id.button_flip);
         Button next= (Button) root.findViewById(R.id.button_next);
         mTextView=(TextView) root.findViewById(R.id.textView_review);
+        position=new Random().nextInt(flashCards.size());
         mTextView.setText(flashCards.get(position).question);
         flip.setOnClickListener(new View.OnClickListener() {
             @Override
